@@ -12,7 +12,6 @@
 \RequirePackage{pstcol} % To use the standard `color' package with Seminar
 \RequirePackage{semcolor}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[english]{babel}
 \RequirePackage{epsfig}
 \RequirePackage{tikz}
 \RequirePackage{color}

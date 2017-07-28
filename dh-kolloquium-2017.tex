@@ -6,6 +6,9 @@
 \rotateheaderstrue	%%-- otherwise seminar does strange things
 \usepackage{url}
 
+\usepackage[ngerman]{babel}
+\usepackage[babel]{csquotes}
+
 
 \begin{document}
 \providecommand{\Title}{}
@@ -36,6 +39,7 @@
   \item Warum braucht man OCR?
   \item Komponenten eines OCR-Workflows
   \item Modelltraining
+  \item Optimierungsoptionen
   \item OCR-D
   \end{itemize}
 \end{bbawslide}
@@ -46,9 +50,83 @@
 \begin{bbawslide}{Was ist OCR?}
   \vspace*{7mm}%
   \centerslidestrue%
-  \begin{itemize}
-    \item
-  \end{itemize}
+  \begin{tabular}{lc}
+    \begin{minipage}{0.6\textwidth}
+      \begin{itemize}
+        \item \textbf{O}ptical \textbf{C}haracter \textbf{R}ecognition: Automatische Erfassung von Text in Bildern
+        \item ursprünglich begrenzt auf Zeichenerkennung
+        \item heute häufig Synonym für den gesamten Texterfassungsprozess
+        \begin{itemize}
+          \item Bildvorverarbeitung
+          \item Layoutanalyse
+          \item Zeilenerkennung
+          \item \ldots
+        \end{itemize}
+      \end{itemize}
+    \end{minipage}
+    &
+    \begin{minipage}{0.4\textwidth}
+      \epsfig{file=figures/times.eps,width=\textwidth}
+    \end{minipage}
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Zeichenorientierte Ansätze}
+  \vspace*{7mm}%
+  \hspace*{-2em}%
+  \centerslidestrue%
+  \begin{tabular}{lc}
+    \begin{minipage}{0.68\textwidth}
+      \begin{mitemize}
+      \item Erkennung erfolgt \emph{glyphenweise}
+        \begin{description}\small
+          \item[Pattern matching:] Vergleich der Zeichenbilder zu in einem \enquote{Setzkasten} gespeicherten Glyphen \textbf{Pixel für Pixel}
+          \item[Feature extraction:] Zerlegung der Glyphen in vordefinierte, bedeutungstragende \textbf{Eigenschaften}
+          wie \emph{Einfärbung, Kurven, Linien} etc. und Vergleich zu Trainingsmaterialien
+        \end{description}
+      \item Kombination beider Ansätze möglich
+      \item Zerlegung der Seite in \emph{Zeilen} und \emph{Zeichen} notwendig
+      \item Open-Source Software \texttt{Tesseract 3} \hlcite{Smith 2007}
+        \begin{mitemize}\small
+          \item Einsatz verschiedener Lexika für frequente Wörter, Sonderzeichen und
+        häufige Fehler zur Verbesserung der Erkennung
+        \end{mitemize}
+      \end{mitemize}
+    \end{minipage}
+    &
+    \begin{minipage}{0.38\textwidth}
+      \epsfig{file=figures/char.eps,width=\textwidth}
+    \end{minipage}
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Sequenzorientierte Ansätze}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{minipage}{1.05\textwidth}
+    \begin{itemize}
+      \item Erkennung erfolgt \emph{zeilenweise}
+        \begin{description}\small
+          \item[Scaling:] Einheitliche Höhe für alle Zeilen
+          \item[Feature extraction:] Grid mit festgelegter Anzahl (horizontaler) Zeilen und variabler Anzahl
+                                     (vertikaler) Spalten: Zeilen als Sequenzen binärwertiger Vektoren fixer Länge
+        \end{description}
+    \end{itemize}
+  \end{minipage}
+  \begin{center}
+    \epsfig{file=figures/grid.eps,width=1.05\textwidth}
+  \end{center}
+  \begin{minipage}{1.05\textwidth}
+    \begin{itemize}
+      \item Kontextsensitive (i.e.~ über \emph{Übergangswahrscheinlichkeiten} der Vektoren) Erkennung
+      \item Zerlegung der Seite in \emph{Zeilen} notwendig
+      \item Vorgehen (normalerweise) \emph{robuster} gegenüber Varianz durch Artefakte als zeichenorientierte Ansätze
+      \item Open-Source Software \texttt{OCRopus} \hlcite{Breuel 2008}
+      \begin{mitemize}\small
+        \item Einsatz \emph{neuronaler Netzwerke} für die Sequenzklassifikation
+      \end{mitemize}
+    \end{itemize}
+  \end{minipage}
 \end{bbawslide}
 
 \begin{bbawpart}{\Large\bf Warum braucht man OCR?}
@@ -84,6 +162,17 @@
   \end{itemize}
 \end{bbawslide}
 
+\begin{bbawpart}{\Large\bf Optimierungsoptionen}
+\end{bbawpart}
+
+\begin{bbawslide}{Optimierungsoptionen}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
 \begin{bbawpart}{\Large\bf OCR-D}
 \end{bbawpart}
 
@@ -104,8 +193,8 @@
 %%% Local Variables:
 %%% mode: LaTeX
 %%% coding: utf-8
-%%% tab-width: 4
+%%% tab-width: 2
 %%% indent-tabs-mode: nil
 %%% End:
 
-% vim: set ts=4 sw=4 expandtab :
+% vim: set ts=2 sw=2 expandtab :
