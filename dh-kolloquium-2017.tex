@@ -8,6 +8,8 @@
 
 \usepackage[ngerman]{babel}
 \usepackage[babel]{csquotes}
+\usepackage[autoplay]{animate}
+\usepackage{graphicx}
 
 
 \begin{document}
@@ -36,10 +38,11 @@
   \centerslidestrue%
   \begin{itemize}
   \item Was ist OCR?
-  \item Warum braucht man OCR?
+  \item Wozu braucht man OCR?
   \item Komponenten eines OCR-Workflows
   \item Modelltraining
   \item Optimierungsoptionen
+  \item Warum braucht man OCR (i.e. DH-Perspektiven)?
   \item OCR-D
   \end{itemize}
 \end{bbawslide}
@@ -58,7 +61,7 @@
         \item heute häufig Synonym für den gesamten Texterfassungsprozess
         \begin{itemize}
           \item Bildvorverarbeitung
-          \item Layoutanalyse
+          \item Layoutanalyse (OLR)
           \item Zeilenerkennung
           \item \ldots
         \end{itemize}
@@ -129,10 +132,269 @@
   \end{minipage}
 \end{bbawslide}
 
-\begin{bbawpart}{\Large\bf Warum braucht man OCR?}
+\begin{bbawpart}{\Large\bf Wozu braucht man OCR?}
 \end{bbawpart}
 
-\begin{bbawslide}{Warum braucht man OCR?}
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Image by Achim Raschka, CC BY-SA 3.0}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/ANPR.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Image by JD, CC BY-SA 2.0}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/Captcha.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Image by Eluminary, CC BY-SA 4.0}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+          \item Schlüsselinformationsextraktion (\emph{Document's key information extraction})
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/deposit.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+          \item Schlüsselinformationsextraktion (\emph{Document's key information extraction})
+          \item Handschrifterkennung (\emph{Handwritten text recognition})
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/transkribus.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Images by Uwe Springmann, CC BY-SA 4.0}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+          \item Schlüsselinformationsextraktion (\emph{Document's key information extraction})
+          \item Handschrifterkennung (\emph{Handwritten text recognition})
+          \item \textbf{Volltextdigitalisierung}
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/beauvais_0.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+          \item Schlüsselinformationsextraktion (\emph{Document's key information extraction})
+          \item Handschrifterkennung (\emph{Handwritten text recognition})
+          \item \textbf{Volltextdigitalisierung}
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/beauvais_1.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW}
+
+\begin{bbawpart}{\Large\bf Komponenten eines OCR-Workflows}
+\end{bbawpart}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \phantom{\raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item Texterkennung
+      \end{enumerate}
+    }}}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_raw.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item
+        \item
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_raw.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item
+        \item
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_opt.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_opt.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_struct.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3.001\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item Texterkennung
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_struct.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3.001\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item Texterkennung
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_text.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Bildvorverarbeitung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Prozesse zur bestmöglichen Vorbereitung der Digitalisate für OLR und OCR
+    \begin{itemize}\small
+      \item \textbf{Cropping:} Beschneidung des Digitalisats auf den Druckbereich
+      \item \textbf{Deskewing:} Rotation des Digitalisats zur Begradigung von Schrägstellungen
+      \item \textbf{Despeckling:} Entfernung von Bildartefakten (Verschmutzungen, sichtbare Papiermaserung etc.)
+      \item \textbf{Binarization:} Binäre Kodierung der Pixel (bedruckte Bereiche schwarz, nicht-bedruckte Bereiche weiß)
+      \item \textbf{Dewarping:} Begradigung von Wellen auf Zeilenebene
+    \end{itemize}
+    \item starker Einfluss auf die Erkennungsqualität
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Cropping}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
@@ -140,10 +402,31 @@
   \end{itemize}
 \end{bbawslide}
 
-\begin{bbawpart}{\Large\bf Komponenten eines OCR-Workflows}
-\end{bbawpart}
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Deskewing}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Despeckling}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Binarization}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Dewarping}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
@@ -166,6 +449,17 @@
 \end{bbawpart}
 
 \begin{bbawslide}{Optimierungsoptionen}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawpart}{\Large\bf Warum braucht man OCR?}
+\end{bbawpart}
+
+\begin{bbawslide}{Warum braucht man OCR?}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
