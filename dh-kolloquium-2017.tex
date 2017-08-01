@@ -386,51 +386,143 @@
     \begin{itemize}\small
       \item \textbf{Cropping:} Beschneidung des Digitalisats auf den Druckbereich
       \item \textbf{Deskewing:} Rotation des Digitalisats zur Begradigung von Schrägstellungen
-      \item \textbf{Despeckling:} Entfernung von Bildartefakten (Verschmutzungen, sichtbare Papiermaserung etc.)
       \item \textbf{Binarization:} Binäre Kodierung der Pixel (bedruckte Bereiche schwarz, nicht-bedruckte Bereiche weiß)
+      \item \textbf{Despeckling:} Entfernung von Bildartefakten (Verschmutzungen, sichtbare Papiermaserung etc.)
       \item \textbf{Dewarping:} Begradigung von Wellen auf Zeilenebene
     \end{itemize}
     \item starker Einfluss auf die Erkennungsqualität
+    \item besondere Relevanz für historische Vorlagen
   \end{itemize}
 \end{bbawslide}
 
 \begin{bbawslide}{Komponenten eines OCR-Workflows: Cropping}
-  \vspace*{7mm}%
-  \centerslidestrue%
-  \begin{itemize}
-    \item
-  \end{itemize}
+  \vspace*{2mm}%
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \raisebox{-\height}{\epsfig{file=figures/cropping_in.eps,width=0.3\textwidth}}%
+      &
+      \raisebox{-\height}{\epsfig{file=figures/cropping_out.eps,width=0.3\textwidth}}%
+    \end{tabular}
+  \end{center}
 \end{bbawslide}
 
 \begin{bbawslide}{Komponenten eines OCR-Workflows: Deskewing}
-  \vspace*{7mm}%
-  \centerslidestrue%
-  \begin{itemize}
-    \item
-  \end{itemize}
-\end{bbawslide}
-
-\begin{bbawslide}{Komponenten eines OCR-Workflows: Despeckling}
-  \vspace*{7mm}%
-  \centerslidestrue%
-  \begin{itemize}
-    \item
-  \end{itemize}
+  \vspace*{2mm}%
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \raisebox{-\height}{\epsfig{file=figures/deskewing_in.eps,width=0.3\textwidth}}%
+      &
+      \raisebox{-\height}{\epsfig{file=figures/deskewing_out.eps,width=0.3\textwidth}}%
+    \end{tabular}
+  \end{center}
 \end{bbawslide}
 
 \begin{bbawslide}{Komponenten eines OCR-Workflows: Binarization}
-  \vspace*{7mm}%
-  \centerslidestrue%
-  \begin{itemize}
-    \item
-  \end{itemize}
+  \vspace*{2mm}%
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \raisebox{-\height}{\epsfig{file=figures/binarization_in.eps,width=0.4\textwidth}}%
+      &
+      \raisebox{-\height}{\epsfig{file=figures/binarization_out.eps,width=0.4\textwidth}}%
+    \end{tabular}
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Despeckling}
+  \vspace*{2mm}%
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \raisebox{-\height}{\epsfig{file=figures/despeckling_in.eps,width=0.4\textwidth}}%
+      &
+      \raisebox{-\height}{\epsfig{file=figures/despeckling_out.eps,width=0.4\textwidth}}%
+    \end{tabular}
+  \end{center}
 \end{bbawslide}
 
 \begin{bbawslide}{Komponenten eines OCR-Workflows: Dewarping}
+  \vspace*{2mm}%
+  \begin{center}
+      \epsfig{file=figures/dewarping_in_out.eps,width=0.9\textwidth}%
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Bildvorverarbeitung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item Bestandteil der meisten OCR-Programme, häufig jedoch nicht modular
+    \item spezielle Tools
+    \begin{itemize}\small
+      \item \textbf{Scantailor} \url{https://github.com/scantailor/scantailor}
+      \begin{description}\footnotesize
+        \item[+] umfassendes, frei verfügbares Werkzeug
+        \item[-] keine Programmierschnittstelle (API)
+      \end{description}
+      \item \textbf{Olena/SCRIBO} \url{https://www.lrde.epita.fr/wiki/Olena/Modules#SCRIBO}
+      \begin{description}\footnotesize
+        \item[+] frei verfügbare Programmierbibliothek für Deskewing, Binarisierung (Implementierung verschiedener Ansätze)
+        \item[-] keine Weiterentwicklung/Pflege, schlechtes API-Design
+      \end{description}
+      \item \textbf{Unpaper} \url{https://github.com/Flameeyes/unpaper}
+      \begin{description}\footnotesize
+        \item[+] frei verfügbare Programmierbibliothek für Deskewing und Despeckling
+      \end{description}
+    \end{itemize}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Bildvorverarbeitung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item teilweise auch in Bildbearbeitungsbibliotheken integriert
+    \begin{itemize}\small
+      \item \textbf{ImageMagick} \url{https://www.imagemagick.org/}
+      \begin{description}\footnotesize
+        \item[+] extrem umfangreiches, frei verfügbares Softwarepaket
+        \item[-] keine spezifische OCR-Implementierung (aber: \url{http://www.fmwconcepts.com/imagemagick/})
+      \end{description}
+      \item \textbf{Leptonica} \url{http://www.leptonica.com/}
+      \begin{description}\footnotesize
+        \item[+] sehr umfangreiches, frei verfügbares Softwarepaket
+        \item[+] Anwendung in \texttt{Tesseract}
+      \end{description}
+    \end{itemize}
+    \item zahlreiche \textbf{wissenschaftliche Veröffentlichungen} zu einzelnen Aspekten
+    \item \textbf{wissenschaftliche Wettbewerbe} zu ausgewählten Aspekten (insb. Binarization und Deskewing)
+    \item Forschungsergebnisse finden \textbf{kaum Eingang in die Praxis}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item
+    \item Prozesse zur Erkennung der Struktur auf Seiten- und Dokumentebene
+    \begin{itemize}\small
+      \item \textbf{Page Segmentation:} Lokalisierung von zusammenhängenden Text- und Nichttextbereichen
+      \item \textbf{Region Classification:} Typisierung von Textbereichen
+      \item \textbf{Line/Character Splitting:} Lokalisierung der einzelnen Zeilen/Zeichen
+      \item \textbf{Document Analysis:} Konstruktion der logischen Dokumentstruktur (METS!)
+    \end{itemize}
+    \item entscheidend für die korrekte \textbf{Rekonstruktion des Textflusses} und damit für maschinelle Auswertungen
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Prozesse zur Erkennung der Struktur auf Seiten- und Dokumentebene
+    \begin{itemize}\small
+      \item \textbf{Page Segmentation:} Lokalisierung von zusammenhängenden Text- und Nichttextbereichen
+      \item \textbf{Region Classification:} Typisierung von Textbereichen
+      \item \textbf{Line/Character Splitting:} Lokalisierung der einzelnen Zeilen/Zeichen
+      \item \textbf{Document Analysis:} Konstruktion der logischen Dokumentstruktur (METS!)
+    \end{itemize}
+    \item entscheidend für die korrekte \textbf{Rekonstruktion des Textflusses} und damit für maschinelle Auswertungen
   \end{itemize}
 \end{bbawslide}
 
