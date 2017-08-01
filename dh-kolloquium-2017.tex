@@ -8,6 +8,8 @@
 
 \usepackage[ngerman]{babel}
 \usepackage[babel]{csquotes}
+\usepackage[autoplay]{animate}
+\usepackage{graphicx}
 
 
 \begin{document}
@@ -36,10 +38,11 @@
   \centerslidestrue%
   \begin{itemize}
   \item Was ist OCR?
-  \item Warum braucht man OCR?
+  \item Wozu braucht man OCR?
   \item Komponenten eines OCR-Workflows
   \item Modelltraining
   \item Optimierungsoptionen
+  \item Warum braucht man OCR (i.e. DH-Perspektiven)?
   \item OCR-D
   \end{itemize}
 \end{bbawslide}
@@ -58,7 +61,7 @@
         \item heute häufig Synonym für den gesamten Texterfassungsprozess
         \begin{itemize}
           \item Bildvorverarbeitung
-          \item Layoutanalyse
+          \item Layoutanalyse (OLR)
           \item Zeilenerkennung
           \item \ldots
         \end{itemize}
@@ -129,10 +132,386 @@
   \end{minipage}
 \end{bbawslide}
 
-\begin{bbawpart}{\Large\bf Warum braucht man OCR?}
+\begin{bbawpart}{\Large\bf Wozu braucht man OCR?}
 \end{bbawpart}
 
-\begin{bbawslide}{Warum braucht man OCR?}
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Image by Achim Raschka, CC BY-SA 3.0}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/ANPR.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Image by JD, CC BY-SA 2.0}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/Captcha.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Image by Eluminary, CC BY-SA 4.0}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+          \item Schlüsselinformationsextraktion (\emph{Document's key information extraction})
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/deposit.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+          \item Schlüsselinformationsextraktion (\emph{Document's key information extraction})
+          \item Handschrifterkennung (\emph{Handwritten text recognition})
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/transkribus.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Images by Uwe Springmann, CC BY-SA 4.0}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+          \item Schlüsselinformationsextraktion (\emph{Document's key information extraction})
+          \item Handschrifterkennung (\emph{Handwritten text recognition})
+          \item \textbf{Volltextdigitalisierung}
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/beauvais_0.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Wozu braucht man OCR?}
+  \vspace*{1mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item typische Anwendungen:
+        \begin{itemize}\small
+          \item Nummernschilderkennung (\emph{Automatic number plate recognition})
+          \item Captcha-Umgehung (\emph{Completely Automated Public Turing test to tell Computers and Humans Apart})
+          \item Schlüsselinformationsextraktion (\emph{Document's key information extraction})
+          \item Handschrifterkennung (\emph{Handwritten text recognition})
+          \item \textbf{Volltextdigitalisierung}
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/beauvais_1.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW}
+
+\begin{bbawpart}{\Large\bf Komponenten eines OCR-Workflows}
+\end{bbawpart}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \phantom{\raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item Texterkennung
+      \end{enumerate}
+    }}}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_raw.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item
+        \item
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_raw.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item
+        \item
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_opt.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_opt.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_struct.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3.001\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item Texterkennung
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_struct.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-3.001\height}{\parbox{7cm}{%
+      \begin{enumerate}
+        \item Bildvorverarbeitung
+        \item Layoutanalyse
+        \item Texterkennung
+      \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/grenzboten_text.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Bildvorverarbeitung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Prozesse zur bestmöglichen Vorbereitung der Digitalisate für OLR und OCR
+    \begin{itemize}\small
+      \item \textbf{Cropping:} Beschneidung des Digitalisats auf den Druckbereich
+      \item \textbf{Deskewing:} Rotation des Digitalisats zur Begradigung von Schrägstellungen
+      \item \textbf{Binarization:} Binäre Kodierung der Pixel (bedruckte Bereiche schwarz, nicht-bedruckte Bereiche weiß)
+      \item \textbf{Despeckling:} Entfernung von Bildartefakten (Verschmutzungen, sichtbare Papiermaserung etc.)
+      \item \textbf{Dewarping:} Begradigung von Wellen auf Zeilenebene
+    \end{itemize}
+    \item starker Einfluss auf die Erkennungsqualität
+    \item besondere Relevanz für historische Vorlagen
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Cropping}
+  \vspace*{2mm}%
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \raisebox{-\height}{\epsfig{file=figures/cropping_in.eps,width=0.3\textwidth}}%
+      &
+      \raisebox{-\height}{\epsfig{file=figures/cropping_out.eps,width=0.3\textwidth}}%
+    \end{tabular}
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Deskewing}
+  \vspace*{2mm}%
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \raisebox{-\height}{\epsfig{file=figures/deskewing_in.eps,width=0.3\textwidth}}%
+      &
+      \raisebox{-\height}{\epsfig{file=figures/deskewing_out.eps,width=0.3\textwidth}}%
+    \end{tabular}
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Binarization}
+  \vspace*{2mm}%
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \raisebox{-\height}{\epsfig{file=figures/binarization_in.eps,width=0.4\textwidth}}%
+      &
+      \raisebox{-\height}{\epsfig{file=figures/binarization_out.eps,width=0.4\textwidth}}%
+    \end{tabular}
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Despeckling}
+  \vspace*{2mm}%
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \raisebox{-\height}{\epsfig{file=figures/despeckling_in.eps,width=0.4\textwidth}}%
+      &
+      \raisebox{-\height}{\epsfig{file=figures/despeckling_out.eps,width=0.4\textwidth}}%
+    \end{tabular}
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Dewarping}
+  \vspace*{2mm}%
+  \begin{center}
+      \epsfig{file=figures/dewarping_in_out.eps,width=0.9\textwidth}%
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Bildvorverarbeitung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item Bestandteil der meisten OCR-Programme, häufig jedoch nicht modular
+    \item spezielle Tools
+    \begin{itemize}\small
+      \item \textbf{Scantailor} \url{https://github.com/scantailor/scantailor}
+      \begin{description}\footnotesize
+        \item[+] umfassendes, frei verfügbares Werkzeug
+        \item[-] keine Programmierschnittstelle (API)
+      \end{description}
+      \item \textbf{Olena/SCRIBO} \url{https://www.lrde.epita.fr/wiki/Olena/Modules#SCRIBO}
+      \begin{description}\footnotesize
+        \item[+] frei verfügbare Programmierbibliothek für Deskewing, Binarisierung (Implementierung verschiedener Ansätze)
+        \item[-] keine Weiterentwicklung/Pflege, schlechtes API-Design
+      \end{description}
+      \item \textbf{Unpaper} \url{https://github.com/Flameeyes/unpaper}
+      \begin{description}\footnotesize
+        \item[+] frei verfügbare Programmierbibliothek für Deskewing und Despeckling
+      \end{description}
+    \end{itemize}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Bildvorverarbeitung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item teilweise auch in Bildbearbeitungsbibliotheken integriert
+    \begin{itemize}\small
+      \item \textbf{ImageMagick} \url{https://www.imagemagick.org/}
+      \begin{description}\footnotesize
+        \item[+] extrem umfangreiches, frei verfügbares Softwarepaket
+        \item[-] keine spezifische OCR-Implementierung (aber: \url{http://www.fmwconcepts.com/imagemagick/})
+      \end{description}
+      \item \textbf{Leptonica} \url{http://www.leptonica.com/}
+      \begin{description}\footnotesize
+        \item[+] sehr umfangreiches, frei verfügbares Softwarepaket
+        \item[+] Anwendung in \texttt{Tesseract}
+      \end{description}
+    \end{itemize}
+    \item zahlreiche \textbf{wissenschaftliche Veröffentlichungen} zu einzelnen Aspekten
+    \item \textbf{wissenschaftliche Wettbewerbe} zu ausgewählten Aspekten (insb. Binarization und Deskewing)
+    \item Forschungsergebnisse finden \textbf{kaum Eingang in die Praxis}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Prozesse zur Erkennung der Struktur auf Seiten- und Dokumentebene
+    \begin{itemize}\small
+      \item \textbf{Page Segmentation:} Lokalisierung von zusammenhängenden Text- und Nichttextbereichen
+      \item \textbf{Region Classification:} Typisierung von Textbereichen
+      \item \textbf{Line/Character Splitting:} Lokalisierung der einzelnen Zeilen/Zeichen
+      \item \textbf{Document Analysis:} Konstruktion der logischen Dokumentstruktur (METS!)
+    \end{itemize}
+    \item entscheidend für die korrekte \textbf{Rekonstruktion des Textflusses} und damit für maschinelle Auswertungen
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
@@ -140,12 +519,35 @@
   \end{itemize}
 \end{bbawslide}
 
-\begin{bbawpart}{\Large\bf Komponenten eines OCR-Workflows}
-\end{bbawpart}
-
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
   \vspace*{7mm}%
   \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Texterkennung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Texterkennung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Texterkennung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
   \begin{itemize}
     \item
   \end{itemize}
@@ -155,6 +557,30 @@
 \end{bbawpart}
 
 \begin{bbawslide}{Modelltraining}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Texterkennung auf Basis \textbf{statistischer} Modelle
+    \begin{itemize}
+      \item Induktion anhand manuell erstellter Trainingsdaten (i.e.~\textbf{Ground Truth})
+      \item Wahrscheinlichkeitsverteilung abhängig vom Modelltyp entweder direkt berechnet oder (iterativ) optimiert
+    \end{itemize}
+    \item unterschiedliche Anforderung an \textbf{Annotationstiefe} abhängig von der OCR-Engine
+    \item Qualität und Quantität der Trainingsdaten bestimmt Qualität der Modelle
+    \item Kompromiss zwischen \emph{Übertragbarkeit} und spezifischer Textqualität
+    \item mitgelieferte Modelle häufig zu \enquote{allgemein}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Modelltraining: Trainingsdaten}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Modelltraining: Trainingseffekte}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
@@ -173,16 +599,121 @@
   \end{itemize}
 \end{bbawslide}
 
-\begin{bbawpart}{\Large\bf OCR-D}
-\end{bbawpart}
-
-\begin{bbawslide}{OCR-D}
+\begin{bbawslide}{Optimierungsoptionen: Lokale Bildoptimierung}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
     \item
   \end{itemize}
 \end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: OCR-Merging}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: OCR-Nachkorrektur}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: Synthetisches Trainingsmaterial}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawpart}{\Large\bf Warum braucht man OCR?}
+\end{bbawpart}
+
+\begin{bbawslide}{Warum braucht man OCR?}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawpart}{\Large\bf OCR-D}
+\end{bbawpart}
+
+\begin{bbawslide}{OCR-D: Überblick}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item DFG-Initiative zur Verbesserung von OCR-Methoden für historische Drucke insbesondere
+          für die Volltextdigitalisierung aller in den \emph{Verzeichnissen der im deutschen
+          Sprachraum erschienen Drucke} (VD16, VD17, VD18) nachgewiesenen Exemplare
+    \item Koordinationsprojekt an Herzog-August Bibliothek Wolfenbüttel, Staatsbibliothek
+          Berlin, Karlsruher Institut für Technologie und BBAW $\rightarrow$ Implementierung
+          einer Ausschreibung für methodische
+          Projekte auf allen Ebenen eines optimierten OCR-Workflows
+    \begin{itemize}\small
+      \item \ldots
+    \end{itemize}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Workflow}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Projektprämissen}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Lückenschluss zwischen Forschung und Praxis
+    \begin{itemize}\small
+      \item \ldots
+    \end{itemize}
+    \item Methodenpluralismus
+    \begin{itemize}\small
+      \item \ldots
+    \end{itemize}
+    \item konsequent Open-Source
+    \begin{itemize}\small
+      \item \ldots
+    \end{itemize}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Open-Source-Paradigma}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item öffentlich geförderte Projekte $\leadsto$ öffentlich verfügbare Projektergebnisse
+    \item Fehlermeldung und Funktionalitätsfeedback während der Entwicklung
+    \item Weiterentwicklung und Pflege auch nach Ablauf der Förderung
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Open-Source-Paradigma}
+  \vspace*{2mm}%
+  \begin{center}
+      \epsfig{file=figures/tesseract_screen.eps,width=0.9\textwidth}%
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Open-Source-Paradigma}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item öffentlich geförderte Projekte $\leadsto$ öffentlich verfügbare Projektergebnisse
+    \item Fehlermeldung und Funktionalitätsfeedback während der Entwicklung
+    \item Weiterentwicklung und Pflege auch nach Ablauf der Förderung
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawpart}{\Large\bf Danke für Ihre Aufmerksamkeit!\\}
+OCR-D-Team: Elisa Hermann, Maria Federbusch, Clemens Neudecker, Ajinkya Prabhune, Matthias Boenig
+\end{bbawpart}
 
 \end{document}
 
