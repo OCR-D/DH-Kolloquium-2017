@@ -515,14 +515,41 @@
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item Prozesse zur Erkennung der Struktur auf Seiten- und Dokumentebene
-    \begin{itemize}\small
-      \item \textbf{Page Segmentation:} Lokalisierung von zusammenhängenden Text- und Nichttextbereichen
-      \item \textbf{Region Classification:} Typisierung von Textbereichen
-      \item \textbf{Line/Character Splitting:} Lokalisierung der einzelnen Zeilen/Zeichen
-      \item \textbf{Document Analysis:} Konstruktion der logischen Dokumentstruktur (METS!)
-    \end{itemize}
-    \item entscheidend für die korrekte \textbf{Rekonstruktion des Textflusses} und damit für maschinelle Auswertungen
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Texterkennung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Texterkennung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Texterkennung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item
   \end{itemize}
 \end{bbawslide}
 
@@ -530,6 +557,30 @@
 \end{bbawpart}
 
 \begin{bbawslide}{Modelltraining}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Texterkennung auf Basis \textbf{statistischer} Modelle
+    \begin{itemize}
+      \item Induktion anhand manuell erstellter Trainingsdaten (i.e.~\textbf{Ground Truth})
+      \item Wahrscheinlichkeitsverteilung abhängig vom Modelltyp entweder direkt berechnet oder (iterativ) optimiert
+    \end{itemize}
+    \item unterschiedliche Anforderung an \textbf{Annotationstiefe} abhängig von der OCR-Engine
+    \item Qualität und Quantität der Trainingsdaten bestimmt Qualität der Modelle
+    \item Kompromiss zwischen \emph{Übertragbarkeit} und spezifischer Textqualität
+    \item mitgelieferte Modelle häufig zu \enquote{allgemein}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Modelltraining: Trainingsdaten}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Modelltraining: Trainingseffekte}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
@@ -541,6 +592,38 @@
 \end{bbawpart}
 
 \begin{bbawslide}{Optimierungsoptionen}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: Lokale Bildoptimierung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: OCR-Merging}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: OCR-Nachkorrektur}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: Synthetisches Trainingsmaterial}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
@@ -562,13 +645,75 @@
 \begin{bbawpart}{\Large\bf OCR-D}
 \end{bbawpart}
 
-\begin{bbawslide}{OCR-D}
+\begin{bbawslide}{OCR-D: Überblick}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item
+    \item DFG-Initiative zur Verbesserung von OCR-Methoden für historische Drucke insbesondere
+          für die Volltextdigitalisierung aller in den \emph{Verzeichnissen der im deutschen
+          Sprachraum erschienen Drucke} (VD16, VD17, VD18) nachgewiesenen Exemplare
+    \item Koordinationsprojekt an Herzog-August Bibliothek Wolfenbüttel, Staatsbibliothek
+          Berlin, Karlsruher Institut für Technologie und BBAW $\rightarrow$ Implementierung
+          einer Ausschreibung für methodische
+          Projekte auf allen Ebenen eines optimierten OCR-Workflows
+    \begin{itemize}\small
+      \item \ldots
+    \end{itemize}
   \end{itemize}
 \end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Workflow}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Projektprämissen}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Lückenschluss zwischen Forschung und Praxis
+    \begin{itemize}\small
+      \item \ldots
+    \end{itemize}
+    \item Methodenpluralismus
+    \begin{itemize}\small
+      \item \ldots
+    \end{itemize}
+    \item konsequent Open-Source
+    \begin{itemize}\small
+      \item \ldots
+    \end{itemize}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Open-Source-Paradigma}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item öffentlich geförderte Projekte $\leadsto$ öffentlich verfügbare Projektergebnisse
+    \item Fehlermeldung und Funktionalitätsfeedback während der Entwicklung
+    \item Weiterentwicklung und Pflege auch nach Ablauf der Förderung
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Open-Source-Paradigma}
+  \vspace*{2mm}%
+  \begin{center}
+      \epsfig{file=figures/tesseract_screen.eps,width=0.9\textwidth}%
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-D: Open-Source-Paradigma}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item öffentlich geförderte Projekte $\leadsto$ öffentlich verfügbare Projektergebnisse
+    \item Fehlermeldung und Funktionalitätsfeedback während der Entwicklung
+    \item Weiterentwicklung und Pflege auch nach Ablauf der Förderung
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawpart}{\Large\bf Danke für Ihre Aufmerksamkeit!\\}
+OCR-D-Team: Elisa Hermann, Maria Federbusch, Clemens Neudecker, Ajinkya Prabhune, Matthias Boenig
+\end{bbawpart}
 
 \end{document}
 
