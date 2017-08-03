@@ -39,10 +39,10 @@
   \begin{itemize}
   \item Was ist OCR?
   \item Wozu braucht man OCR?
-  \item Komponenten eines OCR-Workflows
+  \item Komponenten eines einfachen OCR-Workflows
   \item Modelltraining
   \item Optimierungsoptionen
-  \item OCR-Workflows
+  \item Komplexere OCR-Workflows
   \item Warum braucht man OCR (i.e. DH-Perspektiven)?
   \item OCR-D
   \end{itemize}
@@ -513,19 +513,116 @@
 \end{bbawslide}
 
 \begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
-  \vspace*{7mm}%
+  \vspace*{2mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item \textbf{strukturierende} Elemente
+        \begin{itemize}
+          \item Absätze
+          \item Überschriften
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/layout_rec_example.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
+  \vspace*{2mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item \textbf{strukturierende} Elemente
+        \begin{itemize}
+          \item Absätze
+          \item Überschriften
+        \end{itemize}
+        \item \textbf{textflussunterbrechende} Elemente
+        \begin{itemize}
+          \item Seitenzahlen
+          \item Kolumnentitel
+          \item Abbildungsunterschriften
+          \item Marginalien etc.
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/layout_rec_example.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
+  \vspace*{2mm}%
+  \centerslidesfalse%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+      \begin{itemize}
+        \item \textbf{strukturierende} Elemente
+        \begin{itemize}
+          \item Absätze
+          \item Überschriften
+        \end{itemize}
+        \item \textbf{textflussunterbrechende} Elemente
+        \begin{itemize}
+          \item Seitenzahlen
+          \item Kolumnentitel
+          \item Abbildungsunterschriften
+          \item Marginalien etc.
+        \end{itemize}
+        \item \textbf{nichttextuelle} Elemente
+        \begin{itemize}
+          \item Abbildungen
+          \item Tabellen
+        \end{itemize}
+      \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/layout_rec_example.eps,width=0.4\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
+  \vspace*{2mm}%
   \centerslidestrue%
+  \textbf{Werkzeuge:}
   \begin{itemize}
-    \item
+    \item auch bei OLR \textbf{Missverhältnis} zwischen Forschungsergebnissen und verfügbaren Lösungen
+    \item OCR-Programme implementieren einfache Lösungen zur Page Segmentation, teilweise separat adressierbar
+    \begin{itemize} \small
+        \item Klassifizierung beschränkt sich im Wesentlichen auf Text vs. Nichttext
+        \item Qualität auf schwierigen Vorlagen überschaubar
+    \end{itemize}
+    \item wissenschaftliche Wettbewerbe und Untersuchungen befassen sich mit der Erkennung \textbf{komplexer Layouts} und \textbf{automatischim Ergebnis nur Einzelbilder auf Zeilenebeneer Dokumentstukturierung}
+    \item jedoch \textbf{keine umfassenden} Ansätzen (Kustoden, Marginalien, Bogensignaturen)
+    \item ebenfalls kaum Forschung zu \textbf{polygonen Zonen}
   \end{itemize}
 \end{bbawslide}
 
 \begin{bbawslide}{Komponenten eines OCR-Workflows: Layoutanalyse}
-  \vspace*{7mm}%
+  \vspace*{2mm}%
   \centerslidestrue%
   \textbf{Werkzeuge:}
   \begin{itemize}
-    \item
+    \item einzelner Befehl für Seiten- und Zeilensegmentierung in \texttt{OCRopus} 
+    \begin{itemize}\small
+      \item im Ergebnis nur Einzelbilder auf Zeilenebene
+      \item \textbf{keine Koordinaten}, kein Zugriff auf Seitensegmentierung
+    \end{itemize}
+    \item Zugriff auf alle Ebenen der Seitensegmentierung in \texttt{Tesseract}
+    \begin{itemize}\small
+      \item \textbf{inklusive Koordinaten}
+      \item basale Klassifizierung der Segmente (Spalten, Abbildungen, Formeln, Tabellen, Text)
+    \end{itemize}
+    \item Layouterkennungswerkzeug \texttt{Larex} \hlcite{Reul at al. 2017}
+    \begin{itemize}\small
+      \item Festlegung buchspezifischer Parameter durch den Nutzer (Spalten, Kolumnentitel etc.) für Klassifizierungsaufgabe
+      \item manuelle Nachkorrektur über Benutzeroberfläche
+      \item inklusive Zeilenerkennung, open-source: \url{https://github.com/chreul/LAREX}, keine API
+    \end{itemize}
   \end{itemize}
 \end{bbawslide}
 
@@ -533,15 +630,15 @@
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item
-  \end{itemize}
-\end{bbawslide}
-
-\begin{bbawslide}{Komponenten eines OCR-Workflows: Texterkennung}
-  \vspace*{7mm}%
-  \centerslidestrue%
-  \begin{itemize}
-    \item
+    \item Kernkomponente der OCR
+    \item Genauigkeit beeinflusst vom Typ des zugrundeliegenden \textbf{Algorithmus} und vom eingesetzten \textbf{Modell}
+    \item aktuell Paradigmenwechsel: \textbf{zeichenorientiert} $\rightarrow$ \textbf{zeilenorientiert}
+    \begin{itemize} \small
+      \item \textbf{Deep learning:} Tiefe (i.e.~vielschichtige) neuronale Netzwerke zur Sequenzklassifizierung \hlcite{Hochreiter und Schmidhuber 1997}
+      \item wesentlich weniger anfällig für \textbf{Zeichenvarianz}
+      \item eingebautes \textbf{Sprachmodell}
+    \end{itemize}
+    \item auch schwierige historische Vorlagen in \enquote{OCR-Reichweite} \hlcite{Springmann 2016}
   \end{itemize}
 \end{bbawslide}
 
@@ -639,6 +736,14 @@
 \begin{bbawpart}{\Large\bf OCR-Workflows}
 \end{bbawpart}
 
+\begin{bbawslide}{OCR-Workflows}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item Zugriff auf einzelne Module, Kombination in spezifischem Workflow
+  \end{itemize}
+\end{bbawslide}
+
 \begin{bbawpart}{\Large\bf Warum braucht man OCR?}
 \end{bbawpart}
 
@@ -699,6 +804,7 @@
     \item öffentlich geförderte Projekte $\leadsto$ öffentlich verfügbare Projektergebnisse
     \item Fehlermeldung und Funktionalitätsfeedback während der Entwicklung
     \item Weiterentwicklung und Pflege auch nach Ablauf der Förderung
+    \item Gamera vs. Tesseract
   \end{itemize}
 \end{bbawslide}
 
@@ -721,6 +827,7 @@
 
 \begin{bbawpart}{\Large\bf Danke für Ihre Aufmerksamkeit!\\}
 OCR-D-Team: Elisa Hermann, Maria Federbusch, Clemens Neudecker, Ajinkya Prabhune, Matthias Boenig
+Mehr zu OCR: \url{https://www.zotero.org/groups/ocr-d}
 \end{bbawpart}
 
 \end{document}
