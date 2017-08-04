@@ -1,5 +1,6 @@
 \documentclass{bbawslides}
 
+\usepackage[TS1, T1]{fontenc}
 \usepackage{ifthen}
 
 \usepackage[a4paper]{hyperref}
@@ -10,6 +11,11 @@
 \usepackage[babel]{csquotes}
 \usepackage[autoplay]{animate}
 \usepackage{graphicx}
+\usepackage{numprint}
+\npthousandsep{~}\npthousandthpartsep{}\npdecimalsign{,}
+
+\DeclareTextSymbol{\textlongs}{TS1}{115} 
+\DeclareTextSymbolDefault{\textlongs}{TS1}
 
 
 \begin{document}
@@ -37,14 +43,24 @@
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-  \item Was ist OCR?
-  \item Wozu braucht man OCR?
-  \item Komponenten eines einfachen OCR-Workflows
-  \item Modelltraining
-  \item Optimierungsoptionen
-  \item Komplexere OCR-Workflows
-  \item Warum braucht man OCR (i.e. DH-Perspektiven)?
-  \item OCR-D
+    \item Einleitung
+    \begin{itemize}\small
+      \item Was ist OCR?
+      \item Wozu benutzt man OCR?
+      \item Warum überhaupt OCR?
+    \end{itemize}
+    \item Technische Aspekte
+    \begin{itemize}\small
+      \item Komponenten eines einfachen OCR-Workflows
+      \item Modelltraining
+      \item Optimierungsoptionen
+      \item Komplexere OCR-Workflows
+    \end{itemize}
+    \item Nichttechnische Aspekte
+    \begin{itemize}\small
+      \item OCR-D
+      \item Open-Source, und dann?
+    \end{itemize}
   \end{itemize}
 \end{bbawslide}
 
@@ -104,7 +120,7 @@
   \end{tabular}
 \end{bbawslide}
 
-\begin{bbawslide}{Sequenzorientierte Ansätze}
+\begin{bbawslide}{Zeilenorientierte Ansätze}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{minipage}{1.05\textwidth}
@@ -264,10 +280,28 @@
 
 \renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW}
 
-\begin{bbawpart}{\Large\bf Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Warum überhaupt OCR?}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \begin{itemize}
+    \item OCR ist immer \textbf{fehlerhaft}! Aber:
+    \item verändertes \enquote{Rechercheverhalten} in Zeiten zunehmender Verfügbarkeit
+          digitaler Quellen
+          \begin{itemize}\small
+            \item Wissenserwerb durch Internetsuche
+            \item Sekundärliteratur (fast) vollständig \textbf{textdigital} verfügbar
+            \item Navigationssystem vs. Autoatlas
+          \end{itemize}
+     \item Ansprüche an Verfügbarkeit von \textbf{Primärquellen} wächst
+     \item vielfältige quantitative Auswertungsmethoden (i.e.~\emph{distant reading})
+     \item für den \textbf{Digital Humanist}: Bruch mit dem \enquote{Diktat der Verfügbarkeit}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawpart}{\Large\bf Komponenten eines einfachen OCR-Workflows}
 \end{bbawpart}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows}
   \vspace*{2mm}%
   \centerslidestrue%
   \begin{tabular}{cc}
@@ -283,7 +317,7 @@
   \end{tabular}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows}
   \vspace*{2mm}%
   \centerslidestrue%
   \begin{tabular}{cc}
@@ -299,7 +333,7 @@
   \end{tabular}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows}
   \vspace*{2mm}%
   \centerslidestrue%
   \begin{tabular}{cc}
@@ -315,7 +349,7 @@
   \end{tabular}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows}
   \vspace*{2mm}%
   \centerslidestrue%
   \begin{tabular}{cc}
@@ -331,7 +365,7 @@
   \end{tabular}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows}
   \vspace*{2mm}%
   \centerslidestrue%
   \begin{tabular}{cc}
@@ -347,7 +381,7 @@
   \end{tabular}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows}
   \vspace*{2mm}%
   \centerslidestrue%
   \begin{tabular}{cc}
@@ -363,7 +397,7 @@
   \end{tabular}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows}
   \vspace*{2mm}%
   \centerslidestrue%
   \begin{tabular}{cc}
@@ -396,7 +430,7 @@
   \end{itemize}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows: Cropping}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows: Cropping}
   \vspace*{2mm}%
   \begin{center}
     \begin{tabular}{c@{\hspace{1cm}}c}
@@ -407,7 +441,7 @@
   \end{center}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows: Deskewing}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows: Deskewing}
   \vspace*{2mm}%
   \begin{center}
     \begin{tabular}{c@{\hspace{1cm}}c}
@@ -440,7 +474,7 @@
   \end{center}
 \end{bbawslide}
 
-\begin{bbawslide}{Komponenten eines OCR-Workflows: Dewarping}
+\begin{bbawslide}{Komponenten eines einfachen OCR-Workflows: Dewarping}
   \vspace*{2mm}%
   \begin{center}
       \epsfig{file=figures/dewarping_in_out.eps,width=0.9\textwidth}%
@@ -590,13 +624,13 @@
   \centerslidestrue%
   \textbf{Werkzeuge:}
   \begin{itemize}
-    \item auch bei OLR \textbf{Missverhältnis} zwischen Forschungsergebnissen und verfügbaren Lösungen
+    \item auch bei der OLR \textbf{Missverhältnis} zwischen Forschungsergebnissen und verfügbaren Lösungen
     \item OCR-Programme implementieren einfache Lösungen zur Page Segmentation, teilweise separat adressierbar
     \begin{itemize} \small
         \item Klassifizierung beschränkt sich im Wesentlichen auf Text vs. Nichttext
         \item Qualität auf schwierigen Vorlagen überschaubar
     \end{itemize}
-    \item wissenschaftliche Wettbewerbe und Untersuchungen befassen sich mit der Erkennung \textbf{komplexer Layouts} und \textbf{automatischim Ergebnis nur Einzelbilder auf Zeilenebeneer Dokumentstukturierung}
+    \item wissenschaftliche Wettbewerbe und Untersuchungen befassen sich mit der Erkennung \textbf{komplexer Layouts} und \textbf{Dokumentstukturierung}
     \item jedoch \textbf{keine umfassenden} Ansätzen (Kustoden, Marginalien, Bogensignaturen)
     \item ebenfalls kaum Forschung zu \textbf{polygonen Zonen}
   \end{itemize}
@@ -647,10 +681,36 @@
   \centerslidestrue%
   \textbf{Werkzeuge:}
   \begin{itemize}
-    \item überraschend viele verfügbare OCR-Engines (cf. \url{https://github.com/kba/awesome-ocr})
-    \item zwei Platzhirsche im Open-Source-Bereich
-    \begin{itemize}
-      \item \texttt{Tesseract}
+    \item überraschend viele verfügbare OCR-Engines
+    \item \url{https://github.com/kba/awesome-ocr}
+    \item Abbyy \texttt{FineReader} am verbreitetsten im produktiven Einsatz
+    \item zwei Platzhirsche im \textbf{Open-Source-Bereich}
+    \item \texttt{Tesseract} \url{https://github.com/tesseract-ocr/tesseract}
+    \begin{itemize}\small
+      \item ursprünglich von Hewlett-Packard entwickelt
+      \item von Google übernommen und Open-Source gestellt
+      \item viele \textbf{mitgelieferte Modelle} (auch für Fraktur)
+      \item mit Version 4 Umstieg auf zeilenorientiert Erkennung auf Basis neuronaler Netze
+    \end{itemize}
+  \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Komponenten eines OCR-Workflows: Texterkennung}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item \texttt{OCRopus} \url{https://github.com/tmbdev/ocropy}
+    \begin{itemize}\small
+      \item entwickelt von Thomas Breul mit Unterstützung von Google
+      \item ursprünglich als Wrapper für Tesseract, später mit eigener Erkennungsroutine auf Basis neuronaler Netze
+      \item nur wenige \textbf{mitgelieferte Modelle}
+    \end{itemize}
+    \item \texttt{Gamera} \url{https://github.com/hsnr-gamera/gamera}
+    \begin{itemize}\small
+      \item komplettes Framework für Layoutanalyse und Texterkennung
+      \item zeichenorientierter Ansatz auf Basis des \enquote{$k$ nearest neighbor}-Algorithmus'
+      \item nur ein \textbf{mitgeliefertes Modell}
     \end{itemize}
   \end{itemize}
 \end{bbawslide}
@@ -663,174 +723,669 @@
   \centerslidestrue%
   \begin{itemize}
     \item Texterkennung auf Basis \textbf{statistischer} Modelle
-    \begin{itemize}
+    \begin{itemize}\small
       \item Induktion anhand manuell erstellter Trainingsdaten (i.e.~\textbf{Ground Truth})
       \item Wahrscheinlichkeitsverteilung abhängig vom Modelltyp entweder direkt berechnet oder (iterativ) optimiert
     \end{itemize}
-    \item unterschiedliche Anforderung an \textbf{Annotationstiefe} abhängig von der OCR-Engine
-    \item Qualität und Quantität der Trainingsdaten bestimmt Qualität der Modelle
-    \item Kompromiss zwischen \emph{Übertragbarkeit} und spezifischer Textqualität
-    \item mitgelieferte Modelle häufig zu \enquote{allgemein}
+    \item unterschiedliche Ansätze erfordern unterschiedliche \textbf{Trainingsprozeduren}
+    \item grundsätzliches Vorgehen jedoch gleich $\rightarrow$ \textbf{Alignierung} von Text und Bild
+    \begin{itemize}\small
+      \item unterschiedliche Anforderung an \textbf{Annotationstiefe}
+      \item Qualität und Quantität der Trainingsdaten bestimmt Qualität der Modelle
+    
+    \end{itemize}
+    \item Kompromiss zwischen \textbf{Übertragbarkeit} und spezifischer Textqualität
+    \begin{itemize}\small
+      \item mitgelieferte Modelle häufig zu \enquote{allgemein}
+      \item Qualität der Texterkennung im Vergleich zu Standardmodellen \textbf{signifikant höher} \hlcite{Springmann et al. 2015}
+    \end{itemize}
   \end{itemize}
 \end{bbawslide}
 
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW\hspace{4cm} Image by Uwe Springmann, CC BY-SA 4.0}
+
 \begin{bbawslide}{Modelltraining: Trainingsdaten}
-  \vspace*{7mm}%
+  \vspace*{2mm}%
   \centerslidestrue%
-  \begin{itemize}
-    \item
-  \end{itemize}
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+    \begin{itemize}
+      \item Digitalisate und zugehöriger, \textbf{fehlerfreier} Volltext
+      \item Alignierung auf Zeichen- oder Zeilenebene
+      \item \textbf{zeichenorientierte} Ansätze: jedes Zeichen mindestens einmal im Trainingsmaterial
+      \item \textbf{zeilenorientierte} Ansätze: ca. 10 Seiten eines Buches
+      \item \texttt{Tesseracts} \enquote{Latin model} (i.e. großmaßstäbliches Mehrsprachenmodell für Antiquaschriftarten): ca. \numprint{400000} Zeilen in ca. \numprint{4500} Schriftarten
+    \end{itemize}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/gt.eps,width=0.3\textwidth}}%
+  \end{tabular}
+\end{bbawslide}
+
+\renewcommand{\footerText}{\tiny 4. August 2017, DH-Kolloquium, BBAW}
+
+\begin{bbawslide}{Modelltraining: Trainingseffekte}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{center}
+    \epsfig{file=figures/train.eps,width=0.4\textwidth}\\
+    \begin{tabular}{l@{\hspace{2cm}}l}
+      Abbyy \texttt{Finereader 11} & \texttt{OCRopus} \\
+      \begin{minipage}{0.4\textwidth}
+        ES kostet Om kein zeitlich Gut  
+        Dns wieder zu erwerben/\\
+        ES that es nicht der OpfferBluk/\\
+        Cr muste selber sterben\\
+        Vnd emenTod zwar/ welcher gar\\
+        EinFluch vnd Grcwcl war.
+      \end{minipage}
+      & 
+      \begin{minipage}{0.4\textwidth}
+        Es kostet jzm kein zattlchGut\\
+        Bns wteder zu crwerben?\\
+        Es that cs mcht der OpfferBlut?  
+        Ermustcselbcr stcrbcn\\
+        Bnd emnenTodzwar, welchae gar\\
+        EtFluchvnd Grcwewar.
+      \end{minipage}
+    \end{tabular}
+  \end{center}
 \end{bbawslide}
 
 \begin{bbawslide}{Modelltraining: Trainingseffekte}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{center}
+    \epsfig{file=figures/train.eps,width=0.4\textwidth}\\
+    \begin{tabular}{l@{\hspace{2cm}}l}
+      Abbyy \texttt{Finereader 11} & \texttt{OCRopus} (homebrew)\\
+      \begin{minipage}{0.4\textwidth}
+        ES kostet Om kein zeitlich Gut  
+        Dns wieder zu erwerben/\\
+        ES that es nicht der OpfferBluk/\\
+        Cr muste selber sterben\\
+        Vnd emenTod zwar/ welcher gar\\
+        EinFluch vnd Grcwcl war.
+      \end{minipage}
+      & 
+      \begin{minipage}{0.4\textwidth}
+        Es ko\textlongs\textbf{\textcolor{red}{l}}et jhm kein zeitlich Gut  
+        Vns wieder zu \textbf{\textcolor{red}{t}}erwerben/  
+        Es that es nicht der Opffer Blut/  
+        Er mu\textlongs{}te \textlongs{}elber \textlongs{}terben  
+        Vnd einen Tod zwar/ welcher gar  
+        Ein Fluch vnd Grewel war.
+      \end{minipage}
+    \end{tabular}
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawslide}{Modelltraining: Werkzeuge}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item
-  \end{itemize}
+    \item jede OCR-Software kommt mit \textbf{eigener Trainingsprozedur}
+    \item zahlreiche \enquote{ease-of-use}-Wrapper:
+    \begin{itemize}
+      \item \texttt{Tesseract}: \texttt{VietOCR}, \texttt{Aletheia}, \texttt{Franken++}
+      \item \texttt{OCRopus}: \texttt{OCRocis}, HTML-Wrapper
+    \end{itemize}
+    \item Probleme:
+    \begin{itemize}
+      \item teilweise \textbf{kostenpflichtig} (\texttt{Aletheia}) bzw. nicht mehr gepflegt (\texttt{Franken++})
+      \item teilweise zu \textbf{umständlich} in der Bedienung (\texttt{OCRopus}-Training, \texttt{Aletheia})
+    \end{itemize}
+\end{itemize}
 \end{bbawslide}
 
 \begin{bbawpart}{\Large\bf Optimierungsoptionen}
 \end{bbawpart}
 
-\begin{bbawslide}{Optimierungsoptionen}
-  \vspace*{7mm}%
-  \centerslidestrue%
-  \begin{itemize}
-    \item
-  \end{itemize}
-\end{bbawslide}
-
 \begin{bbawslide}{Optimierungsoptionen: Lokale Bildoptimierung}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item
+    \item historische Vorlagen bzw. ältere Digitalisate oftmals suboptimal für OCR
+    \begin{itemize}\small
+      \item unterschiedliche \textbf{Beleuchtung}
+      \item charakteristische \textbf{Trapezform}
+    \end{itemize}
+    \item verschiedene Bearbeitungsebenen
+    \begin{itemize}\small
+      \item Dokument, Seite, Absatz (bzw. Textzone), Zeile
+      \item Operationen greifen \textbf{wiederholt} auf verschiedenen Ebenen ein
+      \item \textbf{maximale Adaptivität} bzgl. spezifischer Charakteristika auf Bild- und Textebene
+      \item Rekonstruierbarkeit über Metadaten (z.B.~Koordinaten) zu gewährleisten
+    \end{itemize}
   \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: Lokale Bildoptimierung}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \begin{tabular}{cc}
+    \raisebox{-\height}{\parbox{7cm}{%
+    \textbf{Rezept:}
+    \begin{enumerate}
+      \item \textbf{Bildoptimierung} auf Seitenebene
+      \item \textbf{Seitensegmentierung} auf Seitenebene
+      \item \textbf{Extraktion} der Segmente aus dem (nichtoptimierten) Original
+      \item \textbf{Bildoptimierung} auf Segmentebene
+      \item \textbf{Zeilensegmentierung} auf Segmentebene
+      \item \textbf{Extraktion} der Zeile aus dem (nichtoptimierten) Segment
+      \item \textbf{Bildoptimierung} auf Zeilenebene
+    \end{enumerate}
+    }}
+    &
+    \raisebox{-\height}{\epsfig{file=figures/deskewing_ex2.eps,width=0.5\textwidth}}%
+  \end{tabular}
 \end{bbawslide}
 
 \begin{bbawslide}{Optimierungsoptionen: OCR-Merging}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item
+    \item Prozesse zur \textbf{Vereinigung} verschiedener OCR-Ergebnisse \textbf{in einen Volltext}
+    \item Fehler auch bei \enquote{optimaler} Vorverarbeitung und Verwendung spezifischer Modelle
+    \item \textbf{unterschiedliche Engines} bzw. Modelle haben \textbf{unterschiedliche Stärken} und machen unterschiedliche Fehler
+    \item Idee: \textbf{Extraktion} korrekt erkannter Textbestandteile \textbf{aus mehreren OCR-Durchgängen} \hlcite{Handley 1998}
+    \item Vorteil: Integration vorhandener OCR ebenfalls möglich
+    \item \textbf{Reduktion} der Anzahl der falsch erkannten Zeichen\\um 14~\% erzielt \hlcite{Boenig et al. 2016} 
   \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-Merging: Kotzebue \enquote{Schutzgeist} (1814)}
+    \begin{tabular}{cc}
+    & \texttt{Abbyy Finereader}\\
+      \begin{minipage}{0.5\textwidth}
+        \epsfig{file=figures/example1.eps,width=\textwidth}
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        E u g e n i a.\\
+        O \textbf{\textcolor{bbawred}{§}}aß, eh mich die Thränen ersticken.\\
+        Nur Einmal noch der Trennung Kuß\\
+        Auf die erblaßten Lippen drücken!\\
+        O gönne mir den le\textbf{\textcolor{bbawred}{h}}ten Genuß!
+      \end{minipage}\\\\
+      \phantom{\texttt{Tesseract}} & \phantom{\texttt{OCRopus}}\\
+      \phantom{
+      \begin{minipage}{0.5\textwidth}
+        Eugeaia.\\
+        O laß, H) mich. die Tht*äaea erIHckm,\\
+        Nur Einqu noch der Trennung Kuß\\
+        Auf die erqußteu Lippen drückenx\\
+        O gönne mie den legten Genußx
+      \end{minipage}}
+      &
+      \phantom{
+      \begin{minipage}{0.5\textwidth}
+        E u g e n i a.\\
+        O \textbf{\textcolor{bbawred}{h}}aß, eh mich die Thränen ersticken,\\
+        Nur Einmal noch der Trennung Kuß\\
+        Auf die erblaßten Lippen drücken!\\
+        O g\textbf{\textcolor{bbawred}{d}}nne mir den letzten Genuß!
+      \end{minipage}
+      }
+    \end{tabular}
+    \vspace{-2em}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-Merging: Kotzebue \enquote{Schutzgeist} (1814)}
+    \begin{tabular}{cc}
+    & \texttt{Abbyy Finereader}\\
+      \begin{minipage}{0.5\textwidth}
+        \epsfig{file=figures/example1.eps,width=\textwidth}
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        E u g e n i a.\\
+        O \textbf{\textcolor{bbawred}{§}}aß, eh mich die Thränen ersticken.\\
+        Nur Einmal noch der Trennung Kuß\\
+        Auf die erblaßten Lippen drücken!\\
+        O gönne mir den le\textbf{\textcolor{bbawred}{h}}ten Genuß!
+      \end{minipage}\\\\
+      \texttt{Tesseract} & \phantom{\texttt{OCRopus}}\\
+      \begin{minipage}{0.5\textwidth}
+        Eugeaia.\\
+        O laß, H) mich. die Tht*äaea erIHckm,\\
+        Nur Einqu noch der Trennung Kuß\\
+        Auf die erqußteu Lippen drückenx\\
+        O gönne mie den legten Genußx
+      \end{minipage}
+      &
+      \phantom{
+      \begin{minipage}{0.5\textwidth}
+        E u g e n i a.\\
+        O \textbf{\textcolor{bbawred}{h}}aß, eh mich die Thränen ersticken,\\
+        Nur Einmal noch der Trennung Kuß\\
+        Auf die erblaßten Lippen drücken!\\
+        O g\textbf{\textcolor{bbawred}{d}}nne mir den letzten Genuß!
+      \end{minipage}
+      }
+    \end{tabular}
+    \vspace{-2em}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-Merging: Kotzebue \enquote{Schutzgeist} (1814)}
+    \begin{tabular}{cc}
+    & \texttt{Abbyy Finereader}\\
+      \begin{minipage}{0.5\textwidth}
+        \epsfig{file=figures/example1.eps,width=\textwidth}
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        E u g e n i a.\\
+        O \textbf{\textcolor{bbawred}{§}}aß, eh mich die Thränen ersticken.\\
+        Nur Einmal noch der Trennung Kuß\\
+        Auf die erblaßten Lippen drücken!\\
+        O gönne mir den le\textbf{\textcolor{bbawred}{h}}ten Genuß!
+      \end{minipage}\\\\
+      \texttt{Tesseract} & \texttt{OCRopus}\\
+      \begin{minipage}{0.5\textwidth}
+        Eugeaia.\\
+        O laß, H) mich. die Tht*äaea erIHckm,\\
+        Nur Einqu noch der Trennung Kuß\\
+        Auf die erqußteu Lippen drückenx\\
+        O gönne mie den legten Genußx
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        E u g e n i a.\\
+        O \textbf{\textcolor{bbawred}{h}}aß, eh mich die Thränen ersticken,\\
+        Nur Einmal noch der Trennung Kuß\\
+        Auf die erblaßten Lippen drücken!\\
+        O g\textbf{\textcolor{bbawred}{d}}nne mir den letzten Genuß!
+      \end{minipage}
+    \end{tabular}
+    \vspace{-2em}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-Merging: Kotzebue \enquote{Schutzgeist} (1814)}
+    \begin{tabular}{cc}
+    & \texttt{Merge}\\
+      \begin{minipage}{0.5\textwidth}
+        \epsfig{file=figures/example1.eps,width=\textwidth}
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        E u g e n i a.\\
+        O laß, eh mich die Thränen ersticken,\\
+        Nur Einmal noch der Trennung Kuß\\
+        Auf die erblaßten Lippen drücken!\\
+        O gönne mir den letzten Genuß!
+      \end{minipage}\\\\
+      \texttt{Tesseract} & \texttt{OCRopus}\\
+      \begin{minipage}{0.5\textwidth}
+        Eugeaia.\\
+        O laß, H) mich. die Tht*äaea erIHckm,\\
+        Nur Einqu noch der Trennung Kuß\\
+        Auf die erqußteu Lippen drückenx\\
+        O gönne mie den legten Genußx
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        E u g e n i a.\\
+        O \textbf{\textcolor{bbawred}{h}}aß, eh mich die Thränen ersticken,\\
+        Nur Einmal noch der Trennung Kuß\\
+        Auf die erblaßten Lippen drücken!\\
+        O g\textbf{\textcolor{bbawred}{d}}nne mir den letzten Genuß!
+      \end{minipage}
+    \end{tabular}
+    \vspace{-2em}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-Merging: Dach \enquote{Einfältige Leichreime} (1653)}
+    \begin{tabular}{cc}
+    & \texttt{Abbyy Finereader}\\
+      \begin{minipage}{0.5\textwidth}
+        \epsfig{file=figures/example2.eps,width=\textwidth}
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        ES kostet Om kein zeitlich Gut\\
+        Dns wieder zu erwerben/\\
+        ES that es nicht der OpfferBluk/\\
+        Cr muste selber sterben\\
+        Vnd emenTod zwar/ welcher gar\\
+        EinFluch vnd Grcwcl war.
+      \end{minipage}\\\\
+      \phantom{\texttt{Tesseract}} & \phantom{\texttt{OCRopus}}\\
+      \phantom{
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs tet jhm kein zeitlich Gut\\
+        Vns wieder zu erwerben/\\
+        Es ihaietz?i1ichi der Opffer Blui/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einenTod zwar / welcher gar\\
+        EinFliich'vud Grewel war.
+      \end{minipage}}
+      &
+      \phantom{
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs\textbf{\textcolor{bbawred}{l}}et jhm kein zeitlich Gut\\
+        Vns wieder zu \textbf{\textcolor{bbawred}{t}}erwerben/\\
+        Es that es nicht der Opffer Blut/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einen Tod zwar/ welcher gar\\
+        Ein Fluch vnd Grewel war.
+      \end{minipage}
+      }
+    \end{tabular}
+    \vspace{-2em}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-Merging: Dach \enquote{Einfältige Leichreime} (1653)}
+    \begin{tabular}{cc}
+    & \texttt{Abbyy Finereader}\\
+      \begin{minipage}{0.5\textwidth}
+        \epsfig{file=figures/example2.eps,width=\textwidth}
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        ES kostet Om kein zeitlich Gut\\
+        Dns wieder zu erwerben/\\
+        ES that es nicht der OpfferBluk/\\
+        Cr muste selber sterben\\
+        Vnd emenTod zwar/ welcher gar\\
+        EinFluch vnd Grcwcl war.
+      \end{minipage}\\\\
+      \texttt{Tesseract} & \phantom{\texttt{OCRopus}}\\
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs tet jhm kein zeitlich Gut\\
+        Vns wieder zu erwerben/\\
+        Es ihaietz?i1ichi der Opffer Blui/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einenTod zwar / welcher gar\\
+        EinFliich'vud Grewel war.
+      \end{minipage}
+      &
+      \phantom{
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs\textbf{\textcolor{bbawred}{l}}et jhm kein zeitlich Gut\\
+        Vns wieder zu \textbf{\textcolor{bbawred}{t}}erwerben/\\
+        Es that es nicht der Opffer Blut/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einen Tod zwar/ welcher gar\\
+        Ein Fluch vnd Grewel war.
+      \end{minipage}
+      }
+    \end{tabular}
+    \vspace{-2em}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-Merging: Dach \enquote{Einfältige Leichreime} (1653)}
+    \begin{tabular}{cc}
+    & \texttt{Abbyy Finereader}\\
+      \begin{minipage}{0.5\textwidth}
+        \epsfig{file=figures/example2.eps,width=\textwidth}
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        ES kostet Om kein zeitlich Gut\\
+        Dns wieder zu erwerben/\\
+        ES that es nicht der OpfferBluk/\\
+        Cr muste selber sterben\\
+        Vnd emenTod zwar/ welcher gar\\
+        EinFluch vnd Grcwcl war.
+      \end{minipage}\\\\
+      \texttt{Tesseract} & \texttt{OCRopus}\\
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs tet jhm kein zeitlich Gut\\
+        Vns wieder zu erwerben/\\
+        Es ihaietz?i1ichi der Opffer Blui/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einenTod zwar / welcher gar\\
+        EinFliich'vud Grewel war.
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs\textbf{\textcolor{bbawred}{l}}et jhm kein zeitlich Gut\\
+        Vns wieder zu \textbf{\textcolor{bbawred}{t}}erwerben/\\
+        Es that es nicht der Opffer Blut/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einen Tod zwar/ welcher gar\\
+        Ein Fluch vnd Grewel war.
+      \end{minipage}
+    \end{tabular}
+    \vspace{-2em}
+\end{bbawslide}
+
+\begin{bbawslide}{OCR-Merging: Dach \enquote{Einfältige Leichreime} (1653)}
+    \begin{tabular}{cc}
+    & \texttt{Merge}\\
+      \begin{minipage}{0.5\textwidth}
+        \epsfig{file=figures/example2.eps,width=\textwidth}
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs tet jhm kein zeitlich Gut\\
+        Vns wieder zu erwerben/\\
+        Es that es nicht der Opffer Blut/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einen Tod zwar / welcher gar\\
+        Ein Fluch vnd Grewel war.
+      \end{minipage}\\\\
+      \texttt{Tesseract} & \texttt{OCRopus}\\
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs tet jhm kein zeitlich Gut\\
+        Vns wieder zu erwerben/\\
+        Es ihaietz?i1ichi der Opffer Blui/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einenTod zwar / welcher gar\\
+        EinFliich'vud Grewel war.
+      \end{minipage}
+      &
+      \begin{minipage}{0.5\textwidth}
+        Es ko\textlongs\textbf{\textcolor{bbawred}{l}}et jhm kein zeitlich Gut\\
+        Vns wieder zu \textbf{\textcolor{bbawred}{t}}erwerben/\\
+        Es that es nicht der Opffer Blut/\\
+        Er mu\textlongs te \textlongs elber \textlongs terben\\
+        Vnd einen Tod zwar/ welcher gar\\
+        Ein Fluch vnd Grewel war.
+      \end{minipage}
+    \end{tabular}
+    \vspace{-2em}
 \end{bbawslide}
 
 \begin{bbawslide}{Optimierungsoptionen: OCR-Nachkorrektur}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item
+    \item auch unter optimierten Bedingungen verbleiben OCR-Fehler
+    \item manuelle oder automatische Korrektur des Textes zur Erhöhung der Qualität
+    \item drei Ansatzmöglichkeiten:
+    \begin{itemize}\small
+      \item \textbf{manuell} (Collaborative Manual Correction/ Crowdsourcing)
+      \item \textbf{programmunterstützt} (Interactive Postcorrection)
+      \item \textbf{automatisch}
+    \end{itemize}
+    \item \enquote{klassische} Aufgabe der \textbf{Computerlinguistik}
+    \begin{itemize}\small
+      \item Anleihen bei Rechtschreibkorrektur
+      \item bzw. Schreibungsnormalisierung \hlcite{Jurish 2012}
+    \end{itemize}
   \end{itemize}
+\end{bbawslide}
+
+\begin{bbawslide}{Optimierungsoptionen: OCR-Nachkorrektur}
+  \vspace*{2mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge}
+  \begin{mitemize}
+    \item \textbf{manuell:}
+    \begin{itemize}\small
+      \item manuelle Transkription/Korrektur des OCR-Ergebnisses, erfordert umfassende Konzeption und (anfängliche) Betreuung, bietet Ansatz für Gamification
+      \item diverse proprietäre und Open-Source-Lösungen, \textbf{plattformgebunden}, z.B. \texttt{DTAQ}
+    \end{itemize}
+    \item \textbf{programmunterstützt:}
+    \begin{itemize}\small
+      \item Unterstützung der manuellen Korrektur durch \textbf{Korrekturvorschläge} und Hervorhebung wahrscheinlich fehlerhafter Texterkennungsergebnisse
+      \item \textbf{Po}st \textbf{Co}rrection \textbf{To}ol \url{https://github.com/cisocrgroup/PoCoTo}
+    \end{itemize}
+    \item \textbf{automatisch:}
+    \begin{itemize}\small
+      \item Korrektur auf Basis von (lexikalischen) Ground-Truth-Daten
+      \item \textbf{Rechtschreibkorrekturprogramme} wie \texttt{hunspell} \url{http://hunspell.github.io/}
+      \item projektspezifische (Insel)-Lösungen wie der sog. \textbf{Bremer Ansatz} für die Zeitschrift \enquote{Die Grenzboten} \hlcite{Nölte et al. 2016}
+    \end{itemize}
+  \end{mitemize}
 \end{bbawslide}
 
 \begin{bbawslide}{Optimierungsoptionen: Synthetisches Trainingsmaterial}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item
+    \item Volltexte historischer Drucke zunehmend vorhanden
+    \begin{itemize}\small
+      \item manuelle Erfassung normalerweise \textbf{ohne} Text-Bild-Alignierung
+      \item Erstellung von Trainingsmaterial \textbf{zeitaufwendig} und teuer
+    \end{itemize}
+    \item Idee: Einsatz von \textbf{Font-rendering}-Software um automatisch alignierte
+          Trainingsdaten zu erzeugen
+    \begin{itemize}\small
+      \item Verwendung historischer Schriften, z.B.~Fraktur \url{http://www.ligafaktur.de/Schriften.html}
+      \item \enquote{künstliche} Artefakte zur Nachahmung der Druckalterung
+    \end{itemize}
   \end{itemize}
 \end{bbawslide}
 
-\begin{bbawpart}{\Large\bf OCR-Workflows}
+\begin{bbawslide}{Optimierungsoptionen: Synthetisches Trainingsmaterial}
+  \vspace*{7mm}%
+  \centerslidestrue%
+  \textbf{Werkzeuge:}
+  \begin{itemize}
+    \item \texttt{OCRopus} (und sein Fork \texttt{Kraken}) und \texttt{Tesseract} mit \textbf{Generierungsmechanismus}
+    \item viele Projekte zur Erstellung \textbf{historischer Fonts} im TTF/OTF-Format für (praktisch) alle alphabetischen Schriftsysteme
+  \end{itemize}
+  \begin{center}
+    \epsfig{file=figures/font_rend1.eps,width=0.8\textwidth}\\[2ex]
+    \epsfig{file=figures/font_rend2.eps,width=0.8\textwidth}
+  \end{center}
+\end{bbawslide}
+
+\begin{bbawpart}{\Large\bf Komplexere OCR-Workflows}
 \end{bbawpart}
 
-\begin{bbawslide}{OCR-Workflows}
+\begin{bbawslide}{Komplexere OCR-Workflows}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item Zugriff auf einzelne Module, Kombination in spezifischem Workflow
+    \item \enquote{einfache} OCR-Workflows in allen OCR-Lösungen implementiert
+    \item \textbf{keine Möglichkeit} zur direkten Integration der diskutierten Optimierungsmöglichkeiten
+    \item kein modulares \textbf{Workflowmanagmentsystem} im Bereich OCR vorhanden
+    \item momentane Lösung:
+    \begin{itemize}
+       \item Zugriff auf \textbf{einzelne Module}
+       \item Kombination in \textbf{spezifischem Workflow}
+       \item aka.~Skripte und Hacks
+    \end{itemize}
+    \item \textbf{OCR-D}
   \end{itemize}
 \end{bbawslide}
 
-\begin{bbawpart}{\Large\bf Warum braucht man OCR?}
-\end{bbawpart}
-
-\begin{bbawslide}{Warum braucht man OCR?}
-  \vspace*{7mm}%
-  \centerslidestrue%
-  \begin{itemize}
-    \item
-  \end{itemize}
+\begin{bbawslide}{Komplexere OCR-Workflows: Beispiel}
+  \vspace*{2mm}%
+  \begin{center}
+      \epsfig{file=figures/workflow.eps,width=1.1\textwidth}%
+  \end{center}
 \end{bbawslide}
 
 \begin{bbawpart}{\Large\bf OCR-D}
 \end{bbawpart}
 
 \begin{bbawslide}{OCR-D: Überblick}
-  \vspace*{7mm}%
+  \vspace*{2mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item DFG-Initiative zur Verbesserung von OCR-Methoden für historische Drucke insbesondere
+    \item \textbf{DFG-Initiative} zur Verbesserung von OCR-Methoden für historische Drucke insbesondere
           für die Volltextdigitalisierung aller in den \emph{Verzeichnissen der im deutschen
           Sprachraum erschienen Drucke} (VD16, VD17, VD18) nachgewiesenen Exemplare
-    \item Koordinationsprojekt an Herzog-August Bibliothek Wolfenbüttel, Staatsbibliothek
-          Berlin, Karlsruher Institut für Technologie und BBAW $\rightarrow$ Implementierung
+    \item \textbf{Koordinationsprojekt} an der Herzog-August Bibliothek Wolfenbüttel, der Staatsbibliothek
+          Berlin, dem Karlsruher Institut für Technologie und der BBAW $\rightarrow$ Implementierung
           einer Ausschreibung für methodische
           Projekte auf allen Ebenen eines optimierten OCR-Workflows
     \begin{itemize}\small
-      \item \ldots
+      \item Bildvorverarbeitung
+      \item Layoutanalyse
+      \item Texterkennung/-optimierung
+      \item Modeltraining
+      \item Langzeitarchivierung
+      \item Qualitätssicherung
     \end{itemize}
   \end{itemize}
-\end{bbawslide}
-
-\begin{bbawslide}{OCR-D: Workflow}
 \end{bbawslide}
 
 \begin{bbawslide}{OCR-D: Projektprämissen}
   \vspace*{7mm}%
   \centerslidestrue%
   \begin{itemize}
-    \item Lückenschluss zwischen Forschung und Praxis
+    \item \textbf{Lückenschluss} zwischen Forschung und Praxis
     \begin{itemize}\small
-      \item \ldots
+      \item Transfer der Forschungsergebnisse
+      \item zugängliche und nachnutzbare Implementierungen
     \end{itemize}
-    \item Methodenpluralismus
+    \item \textbf{Methodenpluralismus}
     \begin{itemize}\small
-      \item \ldots
+      \item insbesondere bei schwierigen Vorlagen: \textbf{kein} bester Algorithmus
+      \item Implementierung möglichst \textbf{vieler Ansätze} samt \enquote{Auswahlmechanismus}
     \end{itemize}
-    \item konsequent Open-Source
+    \item konsequent \textbf{Open-Source}
     \begin{itemize}\small
-      \item \ldots
+      \item Veröffentlichung des Quellcodes \textbf{und}
+      \item Anschluss an vorhandene Communities
     \end{itemize}
   \end{itemize}
 \end{bbawslide}
 
 \begin{bbawslide}{OCR-D: Open-Source-Paradigma}
-  \vspace*{7mm}%
+  \vspace*{2mm}%
   \centerslidestrue%
   \begin{itemize}
     \item öffentlich geförderte Projekte $\leadsto$ öffentlich verfügbare Projektergebnisse
-    \item Fehlermeldung und Funktionalitätsfeedback während der Entwicklung
-    \item Weiterentwicklung und Pflege auch nach Ablauf der Förderung
-    \item Gamera vs. Tesseract
+    \item dank \textbf{Digital Humanities} \enquote{Kulturrevolution}
+    \begin{itemize}\small
+      \item Daten (i.e.~Texte) veröffentlicht unter CC
+      \item \enquote{Belohnung} durch wissenschaftliche Veröffentlichung und Zitierungen
+      \item \textbf{reproducible science}
+    \end{itemize}
+    \item im Bereich der Werkzeuge: \textbf{Verbesserungsbedarf}
+    \begin{itemize}\small
+      \item Entwicklung von Tools mit hohem Aufwand und öffentlich gefördert
+      \item am Projektende Veröffentlichung eines Archivs mit Quellcode unter Open-Source-Lizenz
+    \end{itemize}
+    \item Ziel: Einbindung der Nutzercommunity von \textbf{Anfang an}
+    \begin{itemize}\small
+      \item Fehlermeldung und Funktionalitätsfeedback während der Entwicklung
+      \item Weiterentwicklung und Pflege auch nach Ablauf der Förderung
+    \end{itemize}
   \end{itemize}
 \end{bbawslide}
 
 \begin{bbawslide}{OCR-D: Open-Source-Paradigma}
   \vspace*{2mm}%
   \begin{center}
-      \epsfig{file=figures/tesseract_screen.eps,width=0.9\textwidth}%
+      \epsfig{file=figures/tesseract_screen.eps,width=0.8\textwidth}%
   \end{center}
 \end{bbawslide}
 
-\begin{bbawslide}{OCR-D: Open-Source-Paradigma}
-  \vspace*{7mm}%
-  \centerslidestrue%
-  \begin{itemize}
-    \item öffentlich geförderte Projekte $\leadsto$ öffentlich verfügbare Projektergebnisse
-    \item Fehlermeldung und Funktionalitätsfeedback während der Entwicklung
-    \item Weiterentwicklung und Pflege auch nach Ablauf der Förderung
-  \end{itemize}
-\end{bbawslide}
-
 \begin{bbawpart}{\Large\bf Danke für Ihre Aufmerksamkeit!\\}
-OCR-D-Team: Elisa Hermann, Maria Federbusch, Clemens Neudecker, Ajinkya Prabhune, Matthias Boenig
+OCR-D-Team: Elisa Hermann, Maria Federbusch, Clemens Neudecker, Ajinkya Prabhune, \textbf{Matthias Boenig}\\
 Mehr zu OCR: \url{https://www.zotero.org/groups/ocr-d}
 \end{bbawpart}
 
 \end{document}
+
+%\begin{bbawpart}{\Large\bf Warum braucht man OCR?}
+%\end{bbawpart}
+
+%\begin{bbawslide}{Warum braucht man OCR?}
+%  \vspace*{7mm}%
+%  \centerslidestrue%
+%  \begin{itemize}
+%    \item
+%  \end{itemize}
+%\end{bbawslide}
 
 %
 % modelines
